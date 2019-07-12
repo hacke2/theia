@@ -83,7 +83,7 @@ export class TheiaPluginScanner implements PluginScanner {
 
     getModel(plugin: PluginPackage): PluginModel {
         const result: PluginModel = {
-            id: `${plugin.publisher}.${plugin.name}`,
+            id: `${plugin.publisher.toLowerCase()}.${plugin.name.toLowerCase()}`,
             name: plugin.name,
             publisher: plugin.publisher,
             version: plugin.version,
