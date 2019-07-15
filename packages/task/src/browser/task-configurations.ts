@@ -161,10 +161,13 @@ export class TaskConfigurations implements Disposable {
 
     /** returns the task configuration for a given label or undefined if none */
     getTask(source: string, taskLabel: string): TaskConfiguration | undefined {
+        console.log('--- get task ' + source + ' /// ' + taskLabel);
         const labelConfigMap = this.tasksMap.get(source);
         if (labelConfigMap) {
+            console.log('--- return task! ');
             return labelConfigMap.get(taskLabel);
         }
+        console.log('--- return undefined! ');
     }
 
     /** removes tasks configured in the given task config file */
@@ -212,6 +215,7 @@ export class TaskConfigurations implements Disposable {
                     newTaskMap.set(task.label, task);
                 }
                 const source = this.getSourceFolderFromConfigUri(configFileUri);
+                console.log('**** set task to task map by source ' + source + ' /// ' + configFileUri);
                 this.tasksMap.set(source, newTaskMap);
             }
         }

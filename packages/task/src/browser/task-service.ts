@@ -252,6 +252,7 @@ export class TaskService implements TaskConfigurationClient {
      * It looks for configured and provided tasks.
      */
     async run(source: string, taskLabel: string): Promise<void> {
+        console.log('++++++++++++++++ run ' + source + ' /// ' + taskLabel);
         let task = await this.getProvidedTask(source, taskLabel);
         if (!task) {
             task = this.taskConfigurations.getTask(source, taskLabel);
@@ -260,6 +261,7 @@ export class TaskService implements TaskConfigurationClient {
                 return;
             }
         }
+        console.log('+++ run task is found!!! ' + source + ' /// ' + taskLabel);
 
         this.runTask(task);
     }
